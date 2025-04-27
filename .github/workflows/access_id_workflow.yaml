@@ -1,0 +1,15 @@
+name: Access ID Workflow
+
+on:
+  push:   # trigger workflow on every push
+
+jobs:
+  print-access-id:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print ACCESS_ID
+        run: echo "The ACCESS_ID is ${{ vars.ACCESS_ID }}"

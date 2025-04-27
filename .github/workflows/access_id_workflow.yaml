@@ -1,15 +1,18 @@
 name: Access ID Workflow
 
 on:
-  push:   # trigger workflow on every push
+  push:
 
 jobs:
   print-access-id:
     runs-on: ubuntu-latest
+
+    env:
+      ACCESS_ID: ${{ vars.ACCESS_ID }}   # <== set it under env
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Print ACCESS_ID
-        run: echo "The ACCESS_ID is ${{ vars.ACCESS_ID }}"
+        run: echo "The ACCESS_ID is $ACCESS_ID"   # <== normal shell echo
